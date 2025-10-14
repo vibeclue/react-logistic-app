@@ -1,0 +1,35 @@
+.page {
+  margin-bottom: 8.75rem
+}
+.page__search {
+  margin-bottom: 1.875rem
+}
+.search {
+  display: flex;
+  flex-direction: column;
+  gap: .625rem
+}
+.search__actions {
+  display: flex;
+  -webkit-column-gap: .625rem;
+  -moz-column-gap: .625rem;
+  column-gap: .625rem
+}
+.search__input {
+  border: 1px solid #0d0a18;
+  border-radius: .3125rem;
+  padding: .25rem .625rem;
+  max-width: 8.4375rem
+}
+.search__input::-webkit-input-placeholder {
+  color: #0d0a18
+}
+.search__input:-ms-input-placeholder {
+  color: #0d0a18
+}
+.search__input::-ms-input-placeholder {
+  color: #0d0a18
+}
+.search__input::placeholder {
+  color: #0d0a18
+}

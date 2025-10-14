@@ -1,0 +1,70 @@
+.app-head {
+  background: #f5f5f5;
+  margin-bottom: 3.125rem
+}
+.header__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem .9375rem;
+  gap: 1.25rem
+}
+.header__text {
+  display: flex;
+  flex-direction: column
+}
+.header__logo {
+  max-width: 15.625rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: .625rem;
+  font-style: italic
+}
+.header__logo img {
+  width: 3.125rem;
+  height: 3.125rem
+}
+.header__actions {
+  display: flex;
+  gap: .3125rem
+}
+.header__button::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #0d0a18;
+  position: relative;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s
+}
+.header__button--icon {
+  position: relative;
+  padding-left: .3125rem
+}
+.header__button--icon::after {
+  width: calc(100% + .3125rem);
+  left: -.3125rem
+}
+.header__button--icon span {
+  position: relative;
+  bottom: -.0625rem;
+  left: -.3125rem
+}
+@media (any-hover:hover) {
+  .select__option:hover {
+    background: #d9d9d9
+  }
+  .header__button:hover::after {
+    opacity: 1;
+    visibility: visible
+  }
+  .form__button:hover {
+    box-shadow: 5px 5px 5px #cecdcd
+  }
+  .form__button-close:hover {
+    text-shadow: 5px 5px 5px #a8a7a7
+  }
+}

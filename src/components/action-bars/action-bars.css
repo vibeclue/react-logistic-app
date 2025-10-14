@@ -1,0 +1,33 @@
+.page {
+  margin-bottom: 8.75rem
+}
+.page__pairs {
+  margin-bottom: 1.875rem
+}
+.pairs__title {
+  font-size: 2.25rem
+}
+.pairs__button {
+  border-radius: .3125rem;
+  padding: .625rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 253px;
+  height: 44px;
+  background-color: #fcb040
+}
+.pairs__button--small {
+  width: 123px;
+  font-size: .8125rem;
+  background-color: #495276;
+  text-align: center;
+  color: #fff
+}
+.pairs__buttons {
+  display: flex;
+  gap: .625rem;
+  justify-content: center;
+  align-items: center
+}

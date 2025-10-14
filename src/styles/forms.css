@@ -1,0 +1,75 @@
+.form__content {
+  display: grid;
+  grid-template-columns: 12% 12% 12% 12% 12% 12% auto;
+  gap: 1.0625rem;
+  margin-bottom: 3.75rem
+}
+.form__title {
+  margin-bottom: .625rem
+}
+.form__title span::before {
+  content: "*";
+  color: #f93b3b
+}
+.form__value {
+  margin-bottom: .625rem
+}
+.form__input {
+  border: 1px solid rgba(13,10,24,.6);
+  border-radius: .3125rem;
+  padding: .3125rem .625rem;
+  width: 100%
+}
+.form__buttons {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: flex-end
+}
+.form__button {
+  font-weight: 500;
+  border-radius: .3125rem;
+  padding: .625rem 1.875rem;
+  background-color: #fcb040;
+  flex: 0 1 8.125rem;
+  width: 8.125rem;
+  height: 2.1875rem;
+  transition: all .3s
+}
+.form__button-close {
+  text-decoration: underline;
+  transition: all .3s
+}
+.form-login {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.25rem
+}
+.form-login__item {
+  display: flex;
+  flex-direction: column;
+  row-gap: .5rem;
+  position: relative
+}
+.form-login__item--margin {
+  margin-bottom: 1.25rem
+}
+.form-login__item--margin .form-login__input {
+  padding-right: 2.5rem
+}
+.form-login__icon {
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  color: #0d0a18;
+  cursor: pointer;
+  z-index: 5
+}
+.form-login__buttons {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5625rem
+}
+.form-login__button {
+  width: 100%;
+  flex: 0 0 2.1875rem
+}

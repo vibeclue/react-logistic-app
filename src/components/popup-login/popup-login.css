@@ -1,0 +1,5 @@
+.popup__content--login {
+  max-width: 375px;
+  min-height: 425px;
+  padding: 60px
+}
