@@ -1,42 +1,8 @@
 import { useState } from "react";
 import "./pair-list.css";
 
-const PairList = () => {
-  const [pairs, setPairs] = useState([
-    {
-      pair_id: 1,
-      truck_number: "TR-100",
-      trailer_number: "TL-200",
-      date: "2025-10-10",
-      from_country: "PL",
-      to_country: "DE",
-      cargo: "Электроника",
-      comment: "Срочная доставка",
-      flag: true,
-    },
-    {
-      pair_id: 2,
-      truck_number: "TR-101",
-      trailer_number: "TL-201",
-      date: "2025-10-11",
-      from_country: "LT",
-      to_country: "FR",
-      cargo: "Одежда",
-      comment: "",
-      flag: false,
-    },
-    {
-      pair_id: 3,
-      truck_number: "TR-102",
-      trailer_number: "TL-202",
-      date: "2025-10-12",
-      from_country: "PL",
-      to_country: "IT",
-      cargo: "Автозапчасти",
-      comment: "Нужно перегрузить в Берлине",
-      flag: false,
-    },
-  ]);
+const PairList = ({ data }) => {
+  const [pairs, setPairs] = useState(data);
 
   // Удаление строки
   const deletePair = (id) => {

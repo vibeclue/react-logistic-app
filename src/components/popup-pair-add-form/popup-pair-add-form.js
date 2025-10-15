@@ -1,38 +1,20 @@
 import "../../styles/popup.css";
-import "./popup-pair-add-form.css";
 import { useEffect } from "react";
 
 const PopupPairAddForm = ({ isOpen, onClose }) => {
   // Закрытие при нажатии ESC
   useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener("keydown", handleEsc);
-    }
-
-    // очистка слушателя при закрытии
-    return () => {
-      document.removeEventListener("keydown", handleEsc);
-    };
+    const handleEsc = (e) => e.key === "Escape" && onClose();
+    if (isOpen) document.addEventListener("keydown", handleEsc);
+    return () => document.removeEventListener("keydown", handleEsc);
   }, [isOpen, onClose]);
 
-  // Закрытие при клике по фону  -- не работает
-  const handleOverlayClick = (e) => {
-    if (e.target.classList.contains("popup")) {
-      onClose();
-    }
-  };
   return (
     <div
       id="popup-add-pair"
       className={`popup ${isOpen ? "popup_show" : ""}`}
       aria-hidden={!isOpen}
-      onClick={onClose} // Закрытие при клике вне контента
+      // onClick={onClose} // Закрытие при клике вне контента
     >
       <div className="popup__wrapper" onClick={(e) => e.stopPropagation()}>
         <div className="popup__content popup__content--add-pair">
