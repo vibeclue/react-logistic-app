@@ -1,4 +1,4 @@
-import AppHead from "../app-head/app-head";
+import Header from "../header/header";
 import SearchPanel from "../search-pannel/search-panel";
 import ActionBars from "../action-bars/action-bars";
 import PairList from "../pair-list/pair-list";
@@ -12,17 +12,16 @@ import "../../index.css";
 function App() {
   return (
     <div className="app">
-      <AppHead />
-      <div class="wrapper">
-        <footer class="footer">
-          <div class="footer__container">
+      <div className="wrapper">
+        <Header />
+        <footer className="footer">
+          <div className="footer__container">
             <ActionBars />
             <SearchPanel />
             <PairList />
           </div>
         </footer>
       </div>
-      <div className="search-panel"></div>
       <PopupLogin />
       <PopupPairAddForm />
       <PopupTrucks />

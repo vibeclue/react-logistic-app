@@ -10,7 +10,7 @@ const PopupLogin = () => {
           <h2 className="popup__title">Авторизация</h2>
           <form action="/perform_login" className="form-login" method="POST">
             <div className="form-login__item">
-              <label className="form-login__label" for="username">
+              <label className="form-login__label" htmlFor="username">
                 Логин
               </label>
               <input
@@ -18,13 +18,13 @@ const PopupLogin = () => {
                 id="username"
                 type="text"
                 name="username"
-                autocomplete="on"
+                autoComplete="on"
                 data-error="Error"
-                classNameName="form-login__input form__input"
+                className="form-login__input form__input"
               />
             </div>
             <div className="form-login__item form-login__item--margin">
-              <label className="form-login__label" for="password">
+              <label className="form-login__label" htmlFor="password">
                 Пароль
               </label>
               <input
@@ -32,7 +32,7 @@ const PopupLogin = () => {
                 id="password"
                 type="password"
                 name="password"
-                autocomplete="on"
+                autoComplete="on"
                 data-error="Error"
                 className="form-login__input form__input"
               />

@@ -12,7 +12,7 @@ const SearchPanel = () => {
           name="form[]"
           data-error="error"
           placeholder="Тягач"
-          class="search__input"
+          className="search__input"
         />
         <input
           id="searchTrailer"
@@ -21,7 +21,7 @@ const SearchPanel = () => {
           name="form[]"
           data-error="error"
           placeholder="Прицеп"
-          class="search__input"
+          className="search__input"
         />
         <input
           id="searchDate"
@@ -30,7 +30,7 @@ const SearchPanel = () => {
           name="form[]"
           data-error="error"
           placeholder=""
-          class="search__input"
+          className="search__input"
         />
       </div>
     </div>
@@ -38,14 +38,3 @@ const SearchPanel = () => {
 };
 
 export default SearchPanel;
-
-{
-  /* <div class="page__serch serch">
-        <h3 class="serch__title">Поиск</h3>
-        <div class="serch__actions">
-            <input id="searchTruck" autocomplete="off" type="text" name="form[]" data-error="error" placeholder="Тягач" class="serch__input">
-            <input id="searchTrailer" autocomplete="off" type="text" name="form[]" data-error="error" placeholder="Прицеп" class="serch__input">
-            <input id="searchDate" autocomplete="off" type="date" name="form[]" data-error="error" placeholder class="serch__input">
-        </div>
-    </div>  */
-}

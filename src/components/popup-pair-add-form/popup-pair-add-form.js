@@ -1,21 +1,44 @@
 import "../../styles/popup.css";
 import "./popup-pair-add-form.css";
-import "../../styles/forms.css";
+import { useEffect } from "react";
 
-const PopupPairAddForm = () => {
+const PopupPairAddForm = ({ isOpen, onClose }) => {
+  // Закрытие при нажатии ESC
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener("keydown", handleEsc);
+    }
+
+    // очистка слушателя при закрытии
+    return () => {
+      document.removeEventListener("keydown", handleEsc);
+    };
+  }, [isOpen, onClose]);
+
+  // Закрытие при клике по фону  -- не работает
+  const handleOverlayClick = (e) => {
+    if (e.target.classList.contains("popup")) {
+      onClose();
+    }
+  };
   return (
-    <div id="popup-add-pair" aria-hidden="false" className="popup">
-      <div className="popup__wrapper">
+    <div
+      id="popup-add-pair"
+      className={`popup ${isOpen ? "popup_show" : ""}`}
+      aria-hidden={!isOpen}
+      onClick={onClose} // Закрытие при клике вне контента
+    >
+      <div className="popup__wrapper" onClick={(e) => e.stopPropagation()}>
         <div className="popup__content popup__content--add-pair">
           <h2 className="popup__title">Добавить пару</h2>
           <div className="popup__actions">
-            <form
-              id="form"
-              className="form"
-              action="#"
-              target="_blank"
-              method="post"
-            >
+            <form id="form" className="form" action="#" method="post">
               <div className="form__content">
                 <div className="form__column">
                   <h2 className="form__title">
@@ -26,9 +49,9 @@ const PopupPairAddForm = () => {
                     className="form__select form__input"
                     id="truck_number"
                     name="truck_number"
-                    data-className-modif="form"
                   ></select>
                 </div>
+
                 <div className="form__column">
                   <h2 className="form__title">
                     Номер прицепа <span></span>
@@ -38,73 +61,68 @@ const PopupPairAddForm = () => {
                     className="form__select form__input"
                     id="trailer_number"
                     name="trailer_number"
-                    data-className-modif="form"
                   ></select>
                 </div>
+
                 <div className="form__column">
                   <h2 className="form__title">Дата сцепки</h2>
                   <input
                     id="date"
-                    autocomplete="off"
                     type="date"
                     name="date"
-                    data-error="Error"
-                    placeholder
                     className="form__input"
                   />
                 </div>
+
                 <div className="form__column">
                   <h2 className="form__title">Откуда</h2>
                   <input
-                    autocomplete="on"
                     id="from_country"
                     type="text"
                     name="from_country"
-                    data-error="Error"
-                    placeholder
                     className="form__input"
                   />
                 </div>
+
                 <div className="form__column">
                   <h2 className="form__title">Куда</h2>
                   <input
-                    autocomplete="on"
                     id="to_country"
                     type="text"
                     name="to_country"
-                    data-error="Error"
-                    placeholder
                     className="form__input"
                   />
                 </div>
+
                 <div className="form__column">
                   <h2 className="form__title">Вид груза</h2>
                   <input
-                    autocomplete="on"
                     id="cargo"
                     type="text"
                     name="cargo"
-                    data-error="Error"
-                    placeholder
                     className="form__input"
                   />
                 </div>
+
                 <div className="form__column">
-                  <label className="form__title" for="comment">
+                  <label className="form__title" htmlFor="comment">
                     Комментарий
                   </label>
                   <input
                     id="comment"
                     type="text"
                     name="comment"
-                    data-error="Error"
-                    placeholder
                     className="form__input"
                   />
                 </div>
               </div>
+
               <div className="form__buttons">
-                <button data-close type="button" className="form__button-close">
+                <button
+                  type="button"
+                  className="form__button-close"
+                  onClick={onClose}
+                >
                   Отмена
                 </button>
                 <button type="submit" className="form__button">

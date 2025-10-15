@@ -1,25 +1,25 @@
-import "./app-head.css";
+import "./header.css";
 
-const AppHead = () => {
+const Header = () => {
   return (
     <div className="app-head">
       <div className="header__container">
         <div className="header__body">
-          <a href className="header__logo">
+          <button href="#" className="header__logo">
             <img src="img/logo.svg" alt="" />
             <div className="header__text">
               <span>Logistic</span> Helper
             </div>
-          </a>
-          <div class="header__actions">
+          </button>
+          <div className="header__actions">
             <button
               id="login"
               type="submit"
-              class="header__button header__button--icon"
+              className="header__button header__button--icon"
               data-popup="#popup-login"
             >
               {" "}
-              <span class="_icon-user"></span>Авторизация
+              <span className="_icon-user"></span>Авторизация
             </button>
             {/* <form action="/perform_logout" method="POST">
               <button
@@ -38,4 +38,4 @@ const AppHead = () => {
   );
 };
 
-export default AppHead;
+export default Header;

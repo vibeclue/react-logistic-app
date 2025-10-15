@@ -1,33 +1,39 @@
 import "./action-bars.css";
+import { useState } from "react";
+import PopupPairAddForm from "../popup-pair-add-form/popup-pair-add-form";
 
 const ActionBars = () => {
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const openPopup = () => setIsPopupOpen(true);
+  const closePopup = () => setIsPopupOpen(false);
+
   return (
-    <div className="page__pairs pairs">
-      <h1 className="pairs__title">Существующие пары</h1>
-      <button
-        className="pairs__button hidden"
-        href="#"
-        data-popup="#popup-add-pair"
-      >
-        Добавить пару
-      </button>
-      <div className="pairs__buttons hidden">
-        <button
-          className="pairs__button pairs__button--small"
-          href="#"
-          data-popup="#popup-head"
-        >
-          Управление БД тягача
+    <>
+      <div className="page__pairs pairs">
+        <h1 className="pairs__title">Существующие пары</h1>
+        <button className="pairs__button" onClick={openPopup}>
+          Добавить пару
         </button>
-        <button
-          className="pairs__button pairs__button--small"
-          href="#"
-          data-popup="#popup-trailer"
-        >
-          Управление БД прицепа
-        </button>
+        <div className="pairs__buttons">
+          <button
+            className="pairs__button pairs__button--small"
+            onClick={openPopup}
+          >
+            Управление БД тягача
+          </button>
+          <button
+            className="pairs__button pairs__button--small"
+            onClick={openPopup}
+          >
+            Управление БД прицепа
+          </button>
+        </div>
       </div>
-    </div>
+
+      {/* Попап окно */}
+      <PopupPairAddForm isOpen={isPopupOpen} onClose={closePopup} />
+    </>
   );
 };
 
