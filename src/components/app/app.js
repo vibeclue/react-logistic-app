@@ -3,11 +3,12 @@ import SearchPanel from "../search-pannel/search-panel";
 import ActionBars from "../action-bars/action-bars";
 import PairList from "../pair-list/pair-list";
 import PopupLogin from "../popup-login/popup-login";
+import { useState } from "react";
 
 import "../../index.css";
 
 function App() {
-  const data = [
+  const [pairsData, setPairsData] = useState([
     {
       pair_id: 1,
       truck_number: "TR-100",
@@ -41,7 +42,19 @@ function App() {
       comment: "Нужно перегрузить в Берлине",
       flag: false,
     },
-  ];
+  ]);
+
+  const [trucksData, setTrucksData] = useState([
+    { id: 1, number: "AA 1234 BC" },
+    { id: 2, number: "BB 5678 CC" },
+    { id: 3, number: "CC 9012 DD" },
+  ]);
+
+  const [trailersData, setTrailersData] = useState([
+    { id: 1, number: "AAA OOO 777" },
+    { id: 2, number: "342AI" },
+    { id: 3, number: "555 IO 73" },
+  ]);
 
   return (
     <div className="app">
@@ -49,16 +62,20 @@ function App() {
         <Header />
         <footer className="footer">
           <div className="footer__container">
-            <ActionBars />
+            <ActionBars
+              trucksData={trucksData}
+              trailersData={trailersData}
+              setTrucksData={setTrucksData}
+              setTrailersData={setTrailersData}
+              pairs={pairsData}
+              setPairs={setPairsData}
+            />
             <SearchPanel />
-            <PairList data={data} />
+            <PairList pairs={pairsData} setPairs={setPairsData} />
           </div>
         </footer>
       </div>
       <PopupLogin />
-      {/* <PopupPairAddForm /> */}
-      {/* <PopupTrucks />
-      <PopupTrailers /> */}
     </div>
   );
 }

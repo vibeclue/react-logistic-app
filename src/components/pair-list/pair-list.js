@@ -1,9 +1,6 @@
-import { useState } from "react";
 import "./pair-list.css";
 
-const PairList = ({ data }) => {
-  const [pairs, setPairs] = useState(data);
-
+const PairList = ({ pairs, setPairs }) => {
   // Удаление строки
   const deletePair = (id) => {
     setPairs((prev) => prev.filter((p) => p.pair_id !== id));

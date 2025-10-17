@@ -4,7 +4,14 @@ import PopupPairAddForm from "../popup-pair-add-form/popup-pair-add-form";
 import PopupTrucks from "../popup-trucks/popup-trucks";
 import PopupTrailers from "../popup-trailers/popup-trailers";
 
-const ActionBars = () => {
+const ActionBars = ({
+  trucksData,
+  trailersData,
+  setTrucksData,
+  setTrailersData,
+  pairs,
+  setPairs,
+}) => {
   const [isPopupPairOpen, setIsPopupPairOpen] = useState(false);
   const [isPopupTrucksOpen, setIsPopupTrucksOpen] = useState(false);
   const [isPopupTrailersOpen, setIsPopupTrailersOpen] = useState(false);
@@ -42,11 +49,25 @@ const ActionBars = () => {
       </div>
 
       {/* Попапы */}
-      <PopupPairAddForm isOpen={isPopupPairOpen} onClose={closePopupPair} />
-      <PopupTrucks isOpen={isPopupTrucksOpen} onClose={closePopupTrucks} />
+      <PopupPairAddForm
+        isOpen={isPopupPairOpen}
+        onClose={closePopupPair}
+        trucks={trucksData}
+        trailers={trailersData}
+        pairs={pairs} // из App
+        setPairs={setPairs} // из App
+      />
+      <PopupTrucks
+        isOpen={isPopupTrucksOpen}
+        onClose={closePopupTrucks}
+        trucksData={trucksData}
+        setTrucksData={setTrucksData}
+      />
       <PopupTrailers
         isOpen={isPopupTrailersOpen}
         onClose={closePopupTrailers}
+        trailersData={trailersData}
+        setTrailersData={setTrailersData}
       />
     </>
   );
