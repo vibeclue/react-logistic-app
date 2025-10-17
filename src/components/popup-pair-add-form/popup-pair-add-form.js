@@ -1,5 +1,5 @@
 import "../../styles/popup.css";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 
 const PopupPairAddForm = ({
   isOpen,
@@ -11,8 +11,12 @@ const PopupPairAddForm = ({
 }) => {
   const [selectedTruck, setSelectedTruck] = useState("");
   const [selectedTrailer, setSelectedTrailer] = useState("");
+  const [date, setDate] = useState("");
+  const [fromCountry, setFromCountry] = useState("");
+  const [toCountry, setToCountry] = useState("");
+  const [cargo, setCargo] = useState("");
+  const [comment, setComment] = useState("");
 
-  const formRef = useRef(null);
   // Закрытие при нажатии ESC
   useEffect(() => {
     const handleEsc = (e) => e.key === "Escape" && onClose();
@@ -29,9 +33,13 @@ const PopupPairAddForm = ({
   // чищу форму при открытии попапа
   useEffect(() => {
     if (isOpen) {
-      // setSelectedTruck("");
-      // setSelectedTrailer("");
-      if (formRef.current) formRef.current.reset();
+      setSelectedTruck("");
+      setSelectedTrailer("");
+      setDate("");
+      setFromCountry("");
+      setToCountry("");
+      setCargo("");
+      setComment("");
     }
   }, [isOpen]);
 
@@ -39,32 +47,19 @@ const PopupPairAddForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Получаем значения необязательных полей
-    const date = e.target.date.value;
-    const from_country = e.target.from_country.value;
-    const to_country = e.target.to_country.value;
-    const cargo = e.target.cargo.value;
-    const comment = e.target.comment.value;
-
-    // Создаём объект новой пары
     const newPair = {
-      pair_id: Date.now(), // уникальный id
+      pair_id: Date.now(),
       truck_number: selectedTruck,
       trailer_number: selectedTrailer,
-      date: date || Date.now(),
-      from_country: from_country || "",
-      to_country: to_country || "",
-      cargo: cargo || "",
-      comment: comment || "",
+      date: date || new Date().toISOString().split("T")[0],
+      from_country: fromCountry,
+      to_country: toCountry,
+      cargo,
+      comment,
       flag: false,
     };
 
-    // Добавляем в массив на верхнем уровне
     setPairs([...pairs, newPair]);
-
-    // Закрываем попап и сбрасываем форму
-    setSelectedTruck("");
-    setSelectedTrailer("");
     onClose();
   };
 
@@ -82,17 +77,14 @@ const PopupPairAddForm = ({
         >
           <h2 className="popup__title">Добавить пару</h2>
 
-          <form className="form" onSubmit={handleSubmit} ref={formRef}>
+          <form className="form" onSubmit={handleSubmit}>
             <div className="form__content">
+              {/* Тягач */}
               <div className="form__column">
-                <h2 className="form__title">
-                  Номер тягача <span></span>
-                </h2>
+                <h2 className="form__title">Номер тягача</h2>
                 <select
                   required
                   className="form__select form__input"
-                  id="truck_number"
-                  name="truck_number"
                   value={selectedTruck}
                   onChange={(e) => setSelectedTruck(e.target.value)}
                 >
@@ -105,15 +97,12 @@ const PopupPairAddForm = ({
                 </select>
               </div>
 
+              {/* Прицеп */}
               <div className="form__column">
-                <h2 className="form__title">
-                  Номер прицепа <span></span>
-                </h2>
+                <h2 className="form__title">Номер прицепа</h2>
                 <select
                   required
                   className="form__select form__input"
-                  id="trailer_number"
-                  name="trailer_number"
                   value={selectedTrailer}
                   onChange={(e) => setSelectedTrailer(e.target.value)}
                 >
@@ -126,55 +115,58 @@ const PopupPairAddForm = ({
                 </select>
               </div>
 
+              {/* Дата сцепки */}
               <div className="form__column">
                 <h2 className="form__title">Дата сцепки</h2>
                 <input
-                  id="date"
                   type="date"
-                  name="date"
                   className="form__input"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
                 />
               </div>
 
+              {/* Откуда */}
               <div className="form__column">
                 <h2 className="form__title">Откуда</h2>
                 <input
-                  id="from_country"
                   type="text"
-                  name="from_country"
                   className="form__input"
+                  value={fromCountry}
+                  onChange={(e) => setFromCountry(e.target.value)}
                 />
               </div>
 
+              {/* Куда */}
               <div className="form__column">
                 <h2 className="form__title">Куда</h2>
                 <input
-                  id="to_country"
                   type="text"
-                  name="to_country"
                   className="form__input"
+                  value={toCountry}
+                  onChange={(e) => setToCountry(e.target.value)}
                 />
               </div>
 
+              {/* Вид груза */}
               <div className="form__column">
                 <h2 className="form__title">Вид груза</h2>
                 <input
-                  id="cargo"
                   type="text"
-                  name="cargo"
                   className="form__input"
+                  value={cargo}
+                  onChange={(e) => setCargo(e.target.value)}
                 />
               </div>
 
+              {/* Комментарий */}
               <div className="form__column">
-                <label className="form__title" htmlFor="comment">
-                  Комментарий
-                </label>
+                <h2 className="form__title">Комментарий</h2>
                 <input
-                  id="comment"
                   type="text"
-                  name="comment"
                   className="form__input"
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
                 />
               </div>
             </div>
